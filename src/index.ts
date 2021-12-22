@@ -1,6 +1,6 @@
 import 'dotenv/config'
-import server from './server'
 import config from './config'
+import server from './server'
 
 const { port } = config
 

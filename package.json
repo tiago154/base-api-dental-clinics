@@ -7,7 +7,12 @@
     "test": "jest",
     "dev": "ts-node-dev src/index.ts",
     "build": "tsc",
-    "start": "node dist/src/index.js"
+    "start": "node dist/src/index.js",
+    "lint": "eslint --ext .ts src/",
+    "lint:fix": "eslint --ext .ts src/ --fix",
+    "create:migrate": "knex --knexfile src/clients/database/config.ts migrate:make --",
+    "start:migrate": "npx dotenv -e .env -- knex --knexfile src/clients/database/config.ts migrate:latest",
+    "rollback:migrate": "npx dotenv -e .env -- knex --knexfile src/clients/database/config.ts migrate:rollback"
   },
   "keywords": [],
   "author": "Tiago Santos Da Silva",
@@ -22,6 +27,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "jest": "^27.4.5",
     "ts-jest": "^27.1.2",
     "ts-node-dev": "^1.1.8",
@@ -30,6 +36,7 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
     "knex": "^0.95.14",
     "pg": "^8.7.1"
   }
