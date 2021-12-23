@@ -10,7 +10,7 @@
     "start": "node dist/src/index.js",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "eslint --ext .ts src/ --fix",
-    "create:migrate": "knex --knexfile src/clients/database/config.ts migrate:make --",
+    "create:migrate": "knex --knexfile src/clients/database/config.ts migrate:make -x ts --",
     "start:migrate": "npx dotenv -e .env -- knex --knexfile src/clients/database/config.ts migrate:latest",
     "rollback:migrate": "npx dotenv -e .env -- knex --knexfile src/clients/database/config.ts migrate:rollback"
   },
