@@ -1,4 +1,4 @@
-import { controllers } from '../controllers-with-injections'
+import { controllers } from '../controllers'
 import express from 'express'
 
 const { authController } = controllers

@@ -1,6 +1,14 @@
-import { ControllersInjection } from '../interfaces'
-import { createAuthController } from './auth'
+import { createClients } from '../clients'
+import { createControllers } from './create-controllers'
+import { createDomains } from '../domains'
+import { createRepositories } from '../repositories'
+import config from '../config'
 
-export const createControllers = (injection: ControllersInjection) => ({
-  authController: createAuthController(injection)
-})
+const clients = createClients({ config })
+const repositories = createRepositories({ clients })
+const domains = createDomains({ repositories })
+const controllers = createControllers({ domains })
+
+export {
+  controllers
+}
