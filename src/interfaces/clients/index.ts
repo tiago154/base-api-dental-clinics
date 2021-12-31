@@ -1,5 +1,5 @@
 import { Knex } from 'knex'
 
-export type Clients = {
+export interface Clients {
   database: Knex
 }

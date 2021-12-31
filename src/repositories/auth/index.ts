@@ -1,6 +1,7 @@
 import { RepositoriesInjection } from '../../interfaces'
-import { registerUser } from './actions'
+import { getUserByEmail, registerUser } from './actions'
 
 export const createAuthRepository = (injection: RepositoriesInjection) => ({
-  registerUser: registerUser(injection)
+  registerUser: registerUser(injection),
+  getUserByEmail: getUserByEmail(injection)
 })

@@ -1,5 +1,5 @@
 import { AuthRepository } from './auth'
 
-export type Repositories = {
+export interface Repositories {
   auth: AuthRepository
 }

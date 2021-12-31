@@ -1,3 +1,5 @@
+import * as Utils from './utils'
+import { AuthDomainResponse } from './responses'
 import {
   ClientsInjection,
   ControllersInjection,
@@ -8,10 +10,12 @@ import { Config } from './config'
 import { User } from './user'
 
 export {
+  AuthDomainResponse,
   Config,
   ControllersInjection,
   ClientsInjection,
   RepositoriesInjection,
   User,
-  DomainsInjection
+  DomainsInjection,
+  Utils
 }

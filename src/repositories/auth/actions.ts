@@ -10,3 +10,11 @@ export const registerUser = ({ clients: { database } }: RepositoriesInjection) =
 
   return firstRow
 }
+
+export const getUserByEmail = ({ clients: { database } }: RepositoriesInjection) => async (email: string): Promise<Partial<User> | undefined> => {
+  const userResult = await database<User>('users')
+    .where({ email })
+    .first()
+
+  return userResult
+}

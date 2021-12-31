@@ -1,5 +1,5 @@
 import { AuthDomain } from './auth'
 
-export type Domains = {
+export interface Domains {
   auth: AuthDomain
 }

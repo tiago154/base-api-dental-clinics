@@ -6,7 +6,9 @@ const {
   DATABASE_USER,
   DATABASE_PASSWORD,
   DATABASE_NAME,
-  DATABASE_PORT
+  DATABASE_PORT,
+  AUTH_SECRET,
+  AUTH_EXPIRES_IN
 } = process.env
 
 const config: Config = {
@@ -17,6 +19,10 @@ const config: Config = {
     password: String(DATABASE_PASSWORD),
     port: Number(DATABASE_PORT),
     user: String(DATABASE_USER)
+  },
+  auth: {
+    expiresIn: Number(AUTH_EXPIRES_IN) || 86400,
+    secret: String(AUTH_SECRET)
   }
 }
 
