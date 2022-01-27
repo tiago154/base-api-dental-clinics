@@ -1,18 +1,21 @@
-/*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/configuration
- */
+import type { Config } from '@jest/types'
 
-export default {
+const config: Config.InitialOptions = {
   collectCoverage: true,
-  coverageDirectory: "coverage",
-  coverageProvider: "v8",
+  coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: [
     '**/__tests__/**/*.test.ts'
   ],
   collectCoverageFrom: [
-    '**/src/**/*.ts'
+    '**/src/**/*.ts',
+    '!**/src/index.ts',
+    '!**/src/server.ts',
+    '!**/src/interfaces/**',
+    '!**/src/clients/database/migrations/**'
   ]
-};
+}
+
+export default config
