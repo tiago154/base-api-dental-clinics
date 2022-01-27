@@ -1,0 +1,47 @@
+version: '3'
+services:
+  dental-api:
+    container_name: dental-api
+    build: .
+    command: >
+      sh -c "npm run start:migrate && npm run start"
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      DATABASE_HOST: postgres
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_NAME: dental_clinics
+      DATABASE_PORT: 5432
+      AUTH_SECRET: '0)!1wexq%izbnl2rr0=TUNGA=wxgu9_u!s#=n83s22)wb$v^'
+      AUTH_EXPIRES_IN: 86400
+
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    restart: always
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: dental_clinics
+
+  # Exemplo de nginx
+  nginx:
+    image: openresty/openresty:alpine
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - dental-api
+    links:
+      - dental-api
